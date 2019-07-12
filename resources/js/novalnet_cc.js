@@ -1,6 +1,5 @@
 var $ = jQuery.noConflict();
-var iframeWindow, targetOrigin;
-iframeWindow = targetOrigin = false;
+var iframeWindow = false, targetOrigin = false;
 
 function initIframe()
 {
