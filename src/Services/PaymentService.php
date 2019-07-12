@@ -143,15 +143,19 @@ class PaymentService
         $nnPaymentData['payment_method'] = strtolower($this->paymentHelper->getPaymentKeyByMop($nnPaymentData['mop']));
         $this->executePayment($nnPaymentData);
         
-        $additionalInfo = [ 
-			 'iban' => $nnPaymentData['iban'],
-			 'account_holder' => $nnPaymentData['bank_account_holder'],
-			 'card_holder' => $nnPaymentData['cc_holder'],
-			 'card_number' => $nnPaymentData['cc_no'],
-			 'card_expiry_date' => $nnPaymentData['cc_exp_month'] . '/' . $nnPaymentData['cc_exp_year'] ,
-			 'paypal_reference_tid' => $nnPaymentData['paypal_transaction_id']
-		];
-
+	if ($nnPaymentData['payment_method'] == 'novalnet_sepa') {
+         $additionalInfo = [ 'iban' => $nnPaymentData['iban'],
+			    'account_holder' => $nnPaymentData['bank_account_holder']
+			  ];
+	} elseif ($nnPaymentData['payment_method'] == 'novalnet_cc') { 
+	 $additionalInfo = [ 'card_holder' => $nnPaymentData['cc_holder'],
+			     'card_number' => $nnPaymentData['cc_no'],
+			     'card_expiry_date' => $nnPaymentData['cc_exp_month'] . '/' . $nnPaymentData['cc_exp_year']
+			    ];
+	} elseif ($nnPaymentData['payment_method'] == 'novalnet_paypal') {
+	 $additionalInfo = [ 'paypal_reference_tid' => $nnPaymentData['paypal_transaction_id'] ];
+	}
+	    
         $transactionData = [
             'amount'           => $nnPaymentData['amount'] * 100,
             'callback_amount'  => $nnPaymentData['amount'] * 100,
@@ -160,9 +164,9 @@ class PaymentService
             'payment_name'     => $nnPaymentData['payment_method'],
             'order_no'         => $nnPaymentData['order_no'],
             'email_id'	       => $nnPaymentData['email'],
-			'additional_info'   => (!empty ($nnPaymentData['create_payment_ref'])) ? json_encode ($additionalInfo) : '0',
+	    'additional_info'   => (!empty ($nnPaymentData['create_payment_ref'])) ? json_encode ($additionalInfo) : '0',
             'customer_id'    	=> (!empty ($nnPaymentData['create_payment_ref'])) ? $nnPaymentData['customer_no'] : '0',
-			'one_click_shopping' => (!empty ($nnPaymentData['create_payment_ref'])) ? '1' : '0'
+	    'one_click_shopping' => (!empty ($nnPaymentData['create_payment_ref'])) ? '1' : '0'
         ];
 	    
 	    
