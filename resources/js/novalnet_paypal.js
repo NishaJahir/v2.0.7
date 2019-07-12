@@ -2,6 +2,10 @@ var $ = jQuery.noConflict();
 
 $(document).ready( function() {
 	
+	$('#nn_paypal_form').on('submit', function() {
+		$('#novalnet_form_btn').attr('disabled',true);
+	});
+	
 	$('#savepayment').click(function() {
         if (!$('#savepayment').is(':checked')) {
             $('#save_payment').val('');
@@ -27,8 +31,5 @@ $(document).ready( function() {
 			
 	});
 	
-	$('#nn_paypal_form').on('submit', function() {
-		$('#novalnet_form_btn').attr('disabled',true);
-	});
 });
 
