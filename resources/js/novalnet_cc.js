@@ -78,21 +78,11 @@ $(document).ready(function () {
 	$('#savepayment').click(function() {
 		
         if (!$('#savepayment').is(':checked')) {
-            notSavePaymentData();
+            $('#save_payment').val('');
         } else {
-            savePaymentData();
+            $('#save_payment').val('1');
         }
 	});
-	
-	function savePaymentData()
-	{
-	$('#save_payment').val('1');
-	}
-
-	function notSavePaymentData()
-	{
-	$('#save_payment').val('');
-	}
 	
 	$('#nn_toggle_form').on('click',function(){
 		if ($('#nn_new_card_details').css('display') == 'none'){
