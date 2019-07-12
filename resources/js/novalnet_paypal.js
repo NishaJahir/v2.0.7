@@ -26,5 +26,9 @@ $(document).ready( function() {
 		}
 			
 	});
+	
+	$('#nn_paypal_form').on('submit', function() {
+		$('#novalnet_form_btn').attr('disabled',true);
+	});
 });
 
