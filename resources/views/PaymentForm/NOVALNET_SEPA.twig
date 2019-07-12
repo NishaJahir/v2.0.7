@@ -34,14 +34,14 @@
 							<div id="nn_saved_details" class="row" style="display:{{ref_display_field}};">
 								<div class="col-xs-12 col-sm-12">
 									<div class="input-unit">
-									<input type="text"  value="{{endcustomername}}"   readonly=true> 
-									<label for="sepa_holder">{{trans("Novalnet::PaymentMethod.sepa_account_holder_label")}}*</label>
+									<input type="text" value="{{endcustomername}}" readonly=true> 
+									<label for="sepa_holder">{{trans("Novalnet::PaymentMethod.sepa_account_holder_label")}}</label>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12">
 									<div class="input-unit">
-									<input type="text"  value="{{iban}}"  readonly=true> 
-									<label for="nn_sepa_iban">{{trans("Novalnet::PaymentMethod.sepa_iban_label")}}*</label>
+									<input type="text" value="{{iban}}" readonly=true> 
+									<label for="nn_sepa_iban">{{trans("Novalnet::PaymentMethod.sepa_iban_label")}}</label>
 									</div>
 								</div>
 								<input type='hidden' id="ref_tid" value="{{tid}}" name="ref_tid" />
@@ -63,7 +63,7 @@
 								</div>
 								{% if oneclick == "1" and customer_no != "0" %}
 								<div class="col-xs-12 col-sm-12" id="save_payment_block" style="display:{{display_field}};">
-										<input type="checkbox" id="savepayment" value=""> Save Payment Data
+										<input type="checkbox" id="savepayment" value="">{{trans("Novalnet::PaymentMethod.save_payment_data")}}
 								 </div>	
 								{% endif %}
 							</div>
@@ -90,7 +90,7 @@
 	</div>	
 	
 	<div class="modal-footer">
-		<button type="submit" class="btn btn-primary" id="novalnet_form_btn" onclick="">
+		<button type="submit" class="btn btn-primary" id="novalnet_form_btn">
 			<i class="fa fa-check" aria-hidden="true"> </i>
 			{{ trans("Novalnet::PaymentMethod.submit_button_text") }}
 		</button>
