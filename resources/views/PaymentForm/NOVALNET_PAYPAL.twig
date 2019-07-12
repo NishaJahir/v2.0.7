@@ -18,7 +18,7 @@
 		<fieldset>		
 			<input type="hidden" id="paymentKey" name="paymentKey" value="{{paymentMopKey}}" />
 			<input type='hidden' id="nn_new_details" name="nn_new_details" value={{nn_paypal_new_acc_details}} />
-			<input type='hidden' id="save_payment" name="save_payment" value=''>
+			<input type='hidden' id="save_payment" name="save_payment" value="">
 			<input type="hidden" id="nn_account_display_text_saved" value="{{ trans("Novalnet::PaymentMethod.paypal_account_details_link_old") }}">
 			<input type="hidden" id="nn_account_display_text_new" value="{{ trans("Novalnet::PaymentMethod.paypal_account_details_link_new") }}">
 	    
@@ -34,13 +34,13 @@
 							<div id="nn_saved_details" class="row" style="display:{{ref_display_field}};">
 								<div class="col-xs-12 col-sm-12">
 									<div class="input-unit">
-									  <input type="text"  value="{{paypal_ref_id}}"   readonly=true> 
+									  <input type="text" value="{{paypal_ref_id}}" readonly=true> 
 									  <label for="nn_paypal_reference_id">{{ trans("Novalnet::PaymentMethod.paypal_transaction_id") }}</label>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12">
 								   <div class="input-unit">
-									<input type="text"  value="{{tid}}"  readonly=true> 
+									<input type="text" value="{{tid}}" readonly=true> 
 									<label for="nn_paypal_reference_tid">{{ trans("Novalnet::PaymentMethod.paypal_reference_tid") }}</label>
 									</div>
 								</div>
