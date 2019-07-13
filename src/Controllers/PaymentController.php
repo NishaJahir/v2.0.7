@@ -86,7 +86,8 @@ class PaymentController extends Controller
 	 * @param Response $response
 	 * @param ConfigRepository $config
 	 * @param PaymentHelper $paymentHelper
-	 * @param SessionStorageService $sessionStorage
+	 * @param AddressRepositoryContract $addressRepository
+	 * @param FrontendSessionStorageFactoryContract $sessionStorage
 	 * @param BasketRepositoryContract $basketRepository
 	 * @param PaymentService $paymentService
 	 * @param Twig $twig
@@ -219,16 +220,17 @@ class PaymentController extends Controller
 				} 
 				else
 				{
-			
+					
 					// Guarantee Params Formation 
+					if (empty($address->companyName)) {
+						$serverRequestData['data']['birth_date']   = $birthday;	
+					}
 					if( $requestData['paymentKey'] == 'NOVALNET_SEPA' ) {
 					$serverRequestData['data']['payment_type'] = 'GUARANTEED_DIRECT_DEBIT_SEPA';
 					$serverRequestData['data']['key']          = '40';
-					$serverRequestData['data']['birth_date']   = $birthday;
 					} else {						
 					$serverRequestData['data']['payment_type'] = 'GUARANTEED_INVOICE';
-					$serverRequestData['data']['key']          = '41';
-					$serverRequestData['data']['birth_date']   = $requestData['nn_invoice_birthday'];							
+					$serverRequestData['data']['key']          = '41';							
 					}
 				}
 			}
