@@ -23,13 +23,19 @@ use Plenty\Modules\Plugin\DataBase\Contracts\Migrate;
  */
 class UpdateTransactionTable
 {
+   
     /**
      * Create transaction log table
      *
      * @param Migrate $migrate
      */
-    public function run(Migrate $migrate)
+    public function run(Migrate $migrate, TransactionLog $transactionLog)
     {
-        $migrate->UpdateTable(TransactionLog::class);
+        $tableName = $transactionLog->getTableName();
+        if (!empty ($tableName) && is_string ($tableName)) {
+            $migrate->createTable(TransactionLog::class);
+        } else {
+            $migrate->UpdateTable(TransactionLog::class);
+        }
     }
 }
