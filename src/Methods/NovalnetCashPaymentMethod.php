@@ -57,6 +57,7 @@ class NovalnetCashPaymentMethod extends PaymentMethodService
      * @param ConfigRepository $configRepository
      * @param PaymentHelper $paymentHelper
      * @param PaymentService $paymentService
+     * @param BasketRepositoryContract $basket
      */
     public function __construct(ConfigRepository $configRepository,
                                 PaymentHelper $paymentHelper,
