@@ -610,11 +610,22 @@ class PaymentHelper
 		return $paymentDisplay;
 	}
 	
-	
+	/**
+	* Format a date and time
+	*
+	* @param int $days
+	* return string
+	*/
 	public function dateFormatter($days) {
 		return date( 'Y-m-d', strtotime( date( 'y-m-d' ) . '+ ' . $days . ' days' ) );
 	}
 	
+	/**
+	* Convert larger unit to smaller
+	*
+	* @param float $amount
+	* return int
+	*/
 	public function ConvertAmountToSmallerUnit($amount) {
 		return sprintf('%0.2f', $amount) * 100;
 	}
