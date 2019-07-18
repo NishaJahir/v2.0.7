@@ -25,7 +25,7 @@ use Plenty\Plugin\Log\Loggable;
  *
  * @package Novalnet\Migrations
  */
-class UpdatePaymentMethodName
+class UpdatePaymentMethodName1
 {
    use Loggable;
     /**
@@ -82,7 +82,7 @@ class UpdatePaymentMethodName
     {
 
                 $payment_data = $this->paymentHelper->getPaymentMethodByKey($paymentKey);
-     $this->getLogger(__METHOD__)->error('wq', $payment_data);
+     $this->getLogger(__METHOD__)->error('wq1', $payment_data);
         if ($payment_data[0] == 'no_paymentmethod_found')
         {
           $paymentMethodData = ['pluginKey'  => 'plenty_novalnet',
