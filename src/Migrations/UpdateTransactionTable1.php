@@ -31,9 +31,9 @@ class UpdateTransactionTable1
      *
      * @param Migrate $migrate
      */
-    public function run(Migrate $migrate, Model $model)
+    public function run(Migrate $migrate)
     {
-        $tableName = $model->getTableName();
+        $tableName = getTableName();
        $this->getLogger(__METHOD__)->error('table', $tableName);
         if (!empty ($tableName) && is_string ($tableName)) {
             $migrate->updateTable(TransactionLog::class);
