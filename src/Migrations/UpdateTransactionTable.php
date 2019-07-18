@@ -31,11 +31,11 @@ class UpdateTransactionTable
      */
     public function run(Migrate $migrate, TransactionLog $transactionLog)
     {
-        $tableName = $transactionLog->getTableName();
+        $tableName = $migrate->getTableName();
         if (!empty ($tableName) && is_string ($tableName)) {
-            $migrate->createTable(TransactionLog::class);
+            $migrate->updateTable(TransactionLog::class);
         } else {
-            $migrate->UpdateTable(TransactionLog::class);
+            $migrate->createTable(TransactionLog::class);
         }
     }
 }
