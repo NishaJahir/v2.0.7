@@ -139,7 +139,7 @@ class PaymentHelper
 			{
 				if($paymentMethod->paymentKey == $paymentKey)
 				{
-					return $paymentMethod->id;
+					return [$paymentMethod->id, $paymentMethod->name];
 				}
 			}
 		}
