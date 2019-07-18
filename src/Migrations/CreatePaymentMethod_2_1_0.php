@@ -85,17 +85,18 @@ class CreatePaymentMethod_2_1_0
 
                 $payment_data = $this->paymentHelper->getPaymentMethodByKey($paymentKey);
      $this->getLogger(__METHOD__)->error('create', $payment_data);
-        if ($payment_data == 'no_paymentmethod_found')
+        if ($payment_data[0] == 'no_paymentmethod_found')
         {
           $paymentMethodData = ['pluginKey'  => 'plenty_novalnet',
                               'paymentKey' => $paymentKey,
                               'name'       => $name];
             $this->paymentMethodRepository->createPaymentMethod($paymentMethodData);
-        } else {
+        } elseif (!in_array ($payment_data[1], ['Novalnet Invoice', 'Novalnet Prepayment', 'Novalnet Credit Card', 'Novalnet Direct Debit SEPA', 'Novalnet Online Bank Transfer', 'Novalnet PayPal', 'Novalnet iDEAL', 'Novalnet eps', 'Novalnet giropay', 'Novalnet Przelewy24', 'Novalnet Barzahlen']) ) {
           $paymentMethodData = ['pluginKey'  => 'plenty_novalnet',
                               'paymentKey' => $paymentKey,
                               'name'       => $name,
-                               'id'        => $payment_data];
+                               'id'        => $payment_data[0]
+                               ];
             $this->paymentMethodRepository->updateName($paymentMethodData);
         }
     }
