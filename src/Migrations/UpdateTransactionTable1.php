@@ -33,12 +33,13 @@ class UpdateTransactionTable1
      */
     public function run(Migrate $migrate)
     {
-        $tableName = getTableName();
-       $this->getLogger(__METHOD__)->error('table', $tableName);
-        if (!empty ($tableName) && is_string ($tableName)) {
-            $migrate->updateTable(TransactionLog::class);
-        } else {
-            $migrate->createTable(TransactionLog::class);
-        }
+       $tables = pluginApp(\Plenty\Modules\Plugin\DataBase\Contracts\Model::class);
+      //  $tableName = getTableName();
+       $this->getLogger(__METHOD__)->error('table', $tables);
+       // if (!empty ($tableName) && is_string ($tableName)) {
+       //    $migrate->updateTable(TransactionLog::class);
+      //  } else {
+           // $migrate->createTable(TransactionLog::class);
+       // }
     }
 }
