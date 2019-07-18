@@ -80,8 +80,6 @@ class UpdatePaymentMethodName
      */
     private function createNovalnetPaymentMethodByPaymentKey($paymentKey, $name)
     {
-                
-     
 
                 $payment_data = $this->paymentHelper->getPaymentMethodByKey($paymentKey);
      $this->getLogger(__METHOD__)->error('wq', $payment_data);
