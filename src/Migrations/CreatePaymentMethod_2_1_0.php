@@ -16,6 +16,7 @@ namespace Novalnet\Migrations;
 
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
 use Novalnet\Helper\PaymentHelper;
+use Plenty\Plugin\Log\Loggable;
 
 /**
  * Migration to create payment mehtods
@@ -26,6 +27,7 @@ use Novalnet\Helper\PaymentHelper;
  */
 class CreatePaymentMethod_2_1_0
 {
+   use Loggable;
     /**
      * @var PaymentMethodRepositoryContract
      */
