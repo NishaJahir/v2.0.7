@@ -35,9 +35,9 @@ class UpdateTransactionTable1
     public function run(Migrate $migrate)
     {
        $database = pluginApp(DataBase::class);
-       $order    = $database->query(TransactionLog::class)->get();
+       $order    = $database->find(TransactionLog::class, $id);
       
-       $this->getLogger(__METHOD__)->error('table', $order);
+       $this->getLogger(__METHOD__)->error('SSS', $order);
       //  if (!empty ($tableName) && is_string ($tableName)) {
        //    $migrate->updateTable(TransactionLog::class);
       //  } else {
